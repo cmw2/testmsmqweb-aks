@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-testmsmqwebdisk
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: managed-csi
+  csi:
+    driver: disk.csi.azure.com
+    readOnly: false
+    volumeHandle: /subscriptions/6f4fe300-6d89-4272-8aa9-223e28d46391/resourceGroups/pfad-aks-rg/providers/Microsoft.Compute/disks/pfadtestmsmqwebdisk
+    volumeAttributes:
+      fsType: ext4

@@ -23,6 +23,13 @@ spec:
             memory: 2048M
         ports:
           - containerPort: 80
+        volumeMounts:
+        - mountPath: c:\home
+          name: testmsmqweb-home
+      volumes:
+      - name: testmsmqweb-home
+        persistentVolumeClaim:
+          claimName: pvc-testmsmqwebdisk
   selector:
     matchLabels:
       app: testmsmqweb
